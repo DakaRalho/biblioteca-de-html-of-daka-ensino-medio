@@ -3,51 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reddit-Like Page</title>
+    <title>Login e Criação de Conta</title>
 </head>
 <body>
     <header>
-        <h1>Reddit-Like Page</h1>
+        <h1>Login e Criação de Conta</h1>
     </header>
 
     <main>
-        <section id="posts">
-            <h2>Posts</h2>
-            <ul id="post-list">
-                <li>
-                    <h3>Titulo do Post</h3>
-                    <p>Conteúdo do post...</p>
-                    <button onclick="showComments(1)">Ver Comentários</button>
-                    <ul id="comments-1" style="display: none;">
-                        <li>Comentário 1</li>
-                        <li>Comentário 2</li>
-                    </ul>
-                </li>
-                <li>
-                    <h3>Outro Título do Post</h3>
-                    <p>Conteúdo do outro post...</p>
-                    <button onclick="showComments(2)">Ver Comentários</button>
-                    <ul id="comments-2" style="display: none;">
-                        <li>Comentário 1</li>
-                    </ul>
-                </li>
-            </ul>
+        <section id="login">
+            <h2>Login</h2>
+            <form>
+                <label for="loginUsername">Nome de Usuário:</label>
+                <input type="text" id="loginUsername" name="loginUsername" required><br>
+                
+                <label for="loginPassword">Senha:</label>
+                <input type="password" id="loginPassword" name="loginPassword" required><br>
+                
+                <button type="submit">Entrar</button>
+            </form>
+        </section>
+        
+        <section id="create-account">
+            <h2>Criar Conta</h2>
+            <form>
+                <label for="signupUsername">Nome de Usuário:</label>
+                <input type="text" id="signupUsername" name="signupUsername" required><br>
+                
+                <label for="signupPassword">Senha:</label>
+                <input type="password" id="signupPassword" name="signupPassword" required><br>
+                
+                <label for="confirmPassword">Confirmar Senha:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required><br>
+                
+                <label for="profilePicture">Foto de Perfil:</label>
+                <input type="file" id="profilePicture" name="profilePicture"><br>
+                
+                <label for="biography">Biografia:</label>
+                <textarea id="biography" name="biography"></textarea><br>
+                
+                <button type="submit">Criar Conta</button>
+            </form>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2023 Reddit-Like Page. Todos os direitos reservados.</p>
+        <p>&copy; 2023 Login e Criação de Conta. Todos os direitos reservados.</p>
     </footer>
-
-    <script>
-        function showComments(postId) {
-            var comments = document.getElementById(`comments-${postId}`);
-            if (comments.style.display === "none") {
-                comments.style.display = "block";
-            } else {
-                comments.style.display = "none";
-            }
-        }
-    </script>
 </body>
 </html>
