@@ -3,128 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discord-Like Page</title>
+    <title>Reddit-Like Page</title>
 </head>
 <body>
     <header>
-        <h1>Discord-Like Page</h1>
+        <h1>Reddit-Like Page</h1>
     </header>
 
     <main>
-        <div id="servers">
-            <h2>Servidores</h2>
-            <ul id="server-list"></ul>
-            <button id="create-server-button">Criar Servidor</button>
-        </div>
-
-        <div id="profile">
-            <img id="profile-image" src="user-profile-image.jpg" alt="Perfil">
-            <p id="profile-name">Nome de Usuário</p>
-        </div>
-
-        <div id="messages">
-            <h2>Mensagens</h2>
-            <ul id="message-list"></ul>
-            <textarea id="message-content" placeholder="Digite sua mensagem"></textarea>
-            <button id="send-message-button">Enviar</button>
-        </div>
+        <section id="posts">
+            <h2>Posts</h2>
+            <ul id="post-list">
+                <li>
+                    <h3>Titulo do Post</h3>
+                    <p>Conteúdo do post...</p>
+                    <button onclick="showComments(1)">Ver Comentários</button>
+                    <ul id="comments-1" style="display: none;">
+                        <li>Comentário 1</li>
+                        <li>Comentário 2</li>
+                    </ul>
+                </li>
+                <li>
+                    <h3>Outro Título do Post</h3>
+                    <p>Conteúdo do outro post...</p>
+                    <button onclick="showComments(2)">Ver Comentários</button>
+                    <ul id="comments-2" style="display: none;">
+                        <li>Comentário 1</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2023 Discord-Like Page. Todos os direitos reservados.</p>
+        <p>&copy; 2023 Reddit-Like Page. Todos os direitos reservados.</p>
     </footer>
 
     <script>
-        // Funções JavaScript
-        const serverList = document.getElementById('server-list');
-        const createServerButton = document.getElementById('create-server-button');
-        const profileImage = document.getElementById('profile-image');
-        const profileName = document.getElementById('profile-name');
-        const messageList = document.getElementById('message-list');
-        const messageContent = document.getElementById('message-content');
-        const sendMessageButton = document.getElementById('send-message-button');
-
-        // Exemplo de servidor
-        const servers = [{
-            name: 'Servidor 1',
-            members: ['Usuário 1', 'Usuário 2', 'Usuário 3']
-        }, {
-            name: 'Servidor 2',
-            members: ['Usuário 4', 'Usuário 5']
-        }];
-
-        // Exemplo de perfil
-        const profile = {
-            name: 'Nome de Usuário',
-            image: 'user-profile-image.jpg'
-        };
-
-        // Exemplo de mensagens
-        const messages = [{
-            sender: 'Usuário 1',
-            content: 'Olá, pessoal! Bem-vindos ao servidor!'
-        }, {
-            sender: 'Usuário 2',
-            content: 'Legal! Estou animado para começar as conversas.'
-        }, {
-            sender: 'Usuário 3',
-            content: 'Podemos discutir sobre diversos tópicos aqui.'
-        }];
-
-        // Função para criar servidores
-        function createServer() {
-            const serverName = prompt('Digite o nome do servidor:');
-            if (serverName) {
-                const server = {
-                    name: serverName,
-                    members: []
-                };
-                servers.push(server);
-                updateServerList();
+        function showComments(postId) {
+            var comments = document.getElementById(`comments-${postId}`);
+            if (comments.style.display === "none") {
+                comments.style.display = "block";
+            } else {
+                comments.style.display = "none";
             }
         }
-
-        // Função para atualizar a lista de servidores
-        function updateServerList() {
-            serverList.innerHTML = '';
-            servers.forEach(server => {
-                const serverItem = document.createElement('li');
-                serverItem.textContent = server.name;
-                serverItem.addEventListener('click', () => loadMessages(server));
-                serverList.appendChild(serverItem);
-            });
-        }
-
-        // Função para carregar mensagens de um servidor
-        function loadMessages(server) {
-            messageList.innerHTML = '';
-            server.members.forEach(member => {
-                const messageItem = document.createElement('li');
-                messageItem.textContent = member + ': Olá, pessoal!';
-                messageList.appendChild(messageItem);
-            });
-        }
-
-        // Função para enviar mensagem
-        function sendMessage() {
-            const content = messageContent.value.trim();
-            if (content !== '') {
-                const sender = profile.name;
-                const messageItem = document.createElement('li');
-                messageItem.textContent = sender + ': ' + content;
-                messageList.appendChild(messageItem);
-                messageContent.value = '';
-            }
-        }
-
-        // Inicialização
-        updateServerList();
-        profileImage.src = profile.image;
-        profileName.textContent = profile.name;
-
-        // Event listeners
-        createServerButton.addEventListener('click', createServer);
-        sendMessageButton.addEventListener('click', sendMessage);
     </script>
 </body>
 </html>
