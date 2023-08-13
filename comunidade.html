@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discord-Like Page</title>
-    <style>
-        /* Estilos de CSS... */
-    </style>
 </head>
 <body>
     <header>
@@ -14,18 +11,23 @@
     </header>
 
     <main>
-        <section class="servers">
+        <div id="servers">
             <h2>Servidores</h2>
             <ul id="server-list"></ul>
-            <button id="create-server-button" onclick="createServer()">Criar Servidor</button>
-        </section>
+            <button id="create-server-button">Criar Servidor</button>
+        </div>
 
-        <section class="posts">
-            <h2>Postagens</h2>
-            <textarea id="post-content" rows="4" placeholder="Digite sua postagem"></textarea>
-            <button id="submit-post-button" onclick="submitPost()">Postar</button>
-            <ul id="post-list"></ul>
-        </section>
+        <div id="profile">
+            <img id="profile-image" src="user-profile-image.jpg" alt="Perfil">
+            <p id="profile-name">Nome de Usuário</p>
+        </div>
+
+        <div id="messages">
+            <h2>Mensagens</h2>
+            <ul id="message-list"></ul>
+            <textarea id="message-content" placeholder="Digite sua mensagem"></textarea>
+            <button id="send-message-button">Enviar</button>
+        </div>
     </main>
 
     <footer>
@@ -33,64 +35,96 @@
     </footer>
 
     <script>
-        // Funções de servidor e postagem
-// Armazenamento simulado para servidores e postagens
-const servers = [];
-let currentServerIndex = -1;
+        // Funções JavaScript
+        const serverList = document.getElementById('server-list');
+        const createServerButton = document.getElementById('create-server-button');
+        const profileImage = document.getElementById('profile-image');
+        const profileName = document.getElementById('profile-name');
+        const messageList = document.getElementById('message-list');
+        const messageContent = document.getElementById('message-content');
+        const sendMessageButton = document.getElementById('send-message-button');
 
-// Funções de servidor
-function createServer() {
-    const serverList = document.getElementById('server-list');
-    const serverName = prompt('Digite o nome do servidor:');
+        // Exemplo de servidor
+        const servers = [{
+            name: 'Servidor 1',
+            members: ['Usuário 1', 'Usuário 2', 'Usuário 3']
+        }, {
+            name: 'Servidor 2',
+            members: ['Usuário 4', 'Usuário 5']
+        }];
 
-    if (serverName) {
-        const server = {
-            name: serverName,
-            posts: []
+        // Exemplo de perfil
+        const profile = {
+            name: 'Nome de Usuário',
+            image: 'user-profile-image.jpg'
         };
-        servers.push(server);
-        currentServerIndex = servers.length - 1;
 
-        const serverItem = document.createElement('li');
-        serverItem.textContent = serverName;
-        serverItem.onclick = () => loadPosts(currentServerIndex);
-        serverList.appendChild(serverItem);
+        // Exemplo de mensagens
+        const messages = [{
+            sender: 'Usuário 1',
+            content: 'Olá, pessoal! Bem-vindos ao servidor!'
+        }, {
+            sender: 'Usuário 2',
+            content: 'Legal! Estou animado para começar as conversas.'
+        }, {
+            sender: 'Usuário 3',
+            content: 'Podemos discutir sobre diversos tópicos aqui.'
+        }];
 
-        loadPosts(currentServerIndex);
-    }
-}
-
-// Funções de postagem
-function submitPost() {
-    const postContent = document.getElementById('post-content').value;
-    if (postContent.trim() !== '') {
-        const currentServer = servers[currentServerIndex];
-        if (currentServer) {
-            currentServer.posts.push(postContent);
-
-            const postList = document.getElementById('post-list');
-            const postItem = document.createElement('li');
-            postItem.textContent = postContent;
-            postList.appendChild(postItem);
+        // Função para criar servidores
+        function createServer() {
+            const serverName = prompt('Digite o nome do servidor:');
+            if (serverName) {
+                const server = {
+                    name: serverName,
+                    members: []
+                };
+                servers.push(server);
+                updateServerList();
+            }
         }
-    }
-}
 
-function loadPosts(serverIndex) {
-    const postList = document.getElementById('post-list');
-    postList.innerHTML = '';
+        // Função para atualizar a lista de servidores
+        function updateServerList() {
+            serverList.innerHTML = '';
+            servers.forEach(server => {
+                const serverItem = document.createElement('li');
+                serverItem.textContent = server.name;
+                serverItem.addEventListener('click', () => loadMessages(server));
+                serverList.appendChild(serverItem);
+            });
+        }
 
-    const currentServer = servers[serverIndex];
-    if (currentServer) {
-        currentServer.posts.forEach((postContent) => {
-            const postItem = document.createElement('li');
-            postItem.textContent = postContent;
-            postList.appendChild(postItem);
-        });
-    }
-}
+        // Função para carregar mensagens de um servidor
+        function loadMessages(server) {
+            messageList.innerHTML = '';
+            server.members.forEach(member => {
+                const messageItem = document.createElement('li');
+                messageItem.textContent = member + ': Olá, pessoal!';
+                messageList.appendChild(messageItem);
+            });
+        }
 
-        
+        // Função para enviar mensagem
+        function sendMessage() {
+            const content = messageContent.value.trim();
+            if (content !== '') {
+                const sender = profile.name;
+                const messageItem = document.createElement('li');
+                messageItem.textContent = sender + ': ' + content;
+                messageList.appendChild(messageItem);
+                messageContent.value = '';
+            }
+        }
+
+        // Inicialização
+        updateServerList();
+        profileImage.src = profile.image;
+        profileName.textContent = profile.name;
+
+        // Event listeners
+        createServerButton.addEventListener('click', createServer);
+        sendMessageButton.addEventListener('click', sendMessage);
     </script>
 </body>
 </html>
