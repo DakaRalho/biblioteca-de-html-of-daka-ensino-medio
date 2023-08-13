@@ -3,39 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reddit-Like Page</title>
+    <title>Comunidade</title>
     <style>
         /* Estilos de CSS... */
     </style>
 </head>
 <body>
     <header>
-        <h1>Reddit-Like Page</h1>
+        <h1>Comunidade</h1>
+        <div id="user-info"></div>
     </header>
 
     <main>
-        <div class="auth-form">
-            <h2>Criar Conta</h2>
-            <input type="email" id="signup-email" placeholder="E-mail">
-            <input type="password" id="signup-password" placeholder="Senha">
-            <button onclick="signUp()">Criar Conta</button>
+        <div class="server-list">
+            <h2>Servidores</h2>
+            <ul id="server-list"></ul>
         </div>
 
-        <div class="auth-form">
-            <h2>Login</h2>
-            <input type="email" id="login-email" placeholder="E-mail">
-            <input type="password" id="login-password" placeholder="Senha">
-            <button onclick="signIn()">Login</button>
+        <div class="post-form">
+            <h2>Novo Post</h2>
+            <textarea id="post-content" rows="4" placeholder="Digite seu post aqui"></textarea>
+            <button onclick="submitPost()">Postar</button>
         </div>
-
-        <!-- Área de postagem... -->
 
         <div class="posts">
-            <!-- Aqui serão exibidos os posts -->
+            <h2>Posts</h2>
+            <ul id="post-list"></ul>
         </div>
     </main>
 
-    
     <footer>
         <p>&copy; 2023 Reddit-Like Page. Todos os direitos reservados.</p>
     </footer>
@@ -44,8 +40,8 @@
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
     <script>
-        // Inicialize o Firebase com suas credenciais de configuração
-        const firebaseConfig = {
+        // Inicialize o Firebase...
+const firebaseConfig = {
             apiKey: "YOUR_API_KEY",
             authDomain: "YOUR_AUTH_DOMAIN",
             projectId: "YOUR_PROJECT_ID",
@@ -55,35 +51,12 @@
         };
         firebase.initializeApp(firebaseConfig);
 
+        
         // Funções de autenticação...
-    </script>
-
-    <script>// Verifica se o usuário está autenticado e atualiza a interface
-function updateUI(user) {
-    if (user) {
-        // Usuário está autenticado
-        // Exiba o nome de usuário, foto de perfil, etc.
-        // Implemente a lógica para postagens do usuário autenticado
-
-        // Exemplo: Exibir nome de usuário
-        const userDisplayName = user.displayName || user.email;
-        document.getElementById('user-display-name').textContent = userDisplayName;
-
-        // Exemplo: Exibir foto de perfil
-        const userPhotoURL = user.photoURL;
-        if (userPhotoURL) {
-            document.getElementById('user-photo').src = userPhotoURL;
-        }
-    } else {
-        // Usuário não está autenticado
-        // Implemente a lógica para exibir o formulário de login/registro
-    }
-}
-
 // Funções de autenticação do Firebase
 function signUp() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    const email = document.getElementById('signup-email').value;
+    const password = document.getElementById('signup-password').value;
 
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
@@ -92,12 +65,13 @@ function signUp() {
         })
         .catch((error) => {
             console.error(error);
+            // Trate o erro de criação de conta aqui
         });
 }
 
 function signIn() {
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
 
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
@@ -106,6 +80,7 @@ function signIn() {
         })
         .catch((error) => {
             console.error(error);
+            // Trate o erro de login aqui
         });
 }
 
@@ -123,6 +98,111 @@ function signOut() {
 firebase.auth().onAuthStateChanged((user) => {
     updateUI(user);
 });
-</script>
+
+        
+        // Funções de servidor...
+// Funções de servidor
+function createServer() {
+    const serverName = prompt('Digite o nome do servidor:');
+    if (serverName) {
+        const user = firebase.auth().currentUser;
+
+        if (user) {
+            const serversRef = firebase.firestore().collection('servers');
+            serversRef.add({
+                name: serverName,
+                owner: user.uid
+            })
+            .then(() => {
+                console.log('Servidor criado com sucesso');
+                loadServerList();
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        } else {
+            console.error('Usuário não autenticado');
+        }
+    }
+}
+
+function loadServerList() {
+    const serverList = document.getElementById('server-list');
+    serverList.innerHTML = '';
+
+    const serversRef = firebase.firestore().collection('servers');
+    serversRef.get()
+        .then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                const serverData = doc.data();
+                const serverItem = document.createElement('li');
+                serverItem.textContent = serverData.name;
+                serverList.appendChild(serverItem);
+            });
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+}
+
+// Carregue a lista de servidores ao iniciar a página
+loadServerList();
+
+        
+        // Funções de postagem...
+// Funções de postagem
+function submitPost() {
+    const postContent = document.getElementById('post-content').value;
+    const user = firebase.auth().currentUser;
+
+    if (user && postContent.trim() !== '') {
+        const currentServer = getCurrentServer(); // Implemente essa função para obter o servidor atual
+        if (currentServer) {
+            const postsRef = firebase.firestore().collection('servers').doc(currentServer.id).collection('posts');
+            postsRef.add({
+                content: postContent,
+                userId: user.uid,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            })
+            .then(() => {
+                console.log('Postagem enviada com sucesso');
+                loadPosts();
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+        } else {
+            console.error('Nenhum servidor selecionado');
+        }
+    }
+}
+
+function loadPosts() {
+    const postList = document.getElementById('post-list');
+    postList.innerHTML = '';
+
+    const currentServer = getCurrentServer(); // Implemente essa função para obter o servidor atual
+    if (currentServer) {
+        const postsRef = firebase.firestore().collection('servers').doc(currentServer.id).collection('posts');
+        postsRef.orderBy('timestamp', 'desc').get()
+            .then((querySnapshot) => {
+                querySnapshot.forEach((doc) => {
+                    const postData = doc.data();
+                    const postItem = document.createElement('li');
+                    postItem.innerHTML = `<strong>${postData.userId}:</strong> ${postData.content}`;
+                    postList.appendChild(postItem);
+                });
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    }
+}
+
+// Carregue a lista de postagens ao iniciar a página
+loadPosts();
+
+        
+    </script>
 </body>
 </html>
