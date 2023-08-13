@@ -60,6 +60,23 @@ button {
 button:hover {
     background-color: darkred;
 }
+
+
+button#uploadButton {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button#uploadButton:hover {
+    background-color: darkred;
+}
+
+
+    
 </style>
     
 </head>
@@ -93,9 +110,12 @@ button:hover {
                 
                 <label for="confirmPassword">Confirmar Senha:</label>
                 <input type="password" id="confirmPassword" name="confirmPassword" required><br>
-                
-                <label for="profilePicture">Foto de Perfil:</label>
-                <input type="file" id="profilePicture" name="profilePicture"><br>
+
+
+<label for="profilePicture">Foto de Perfil:</label>
+<input type="file" id="profilePicture" name="profilePicture">
+<button id="uploadButton" onclick="chooseFile()">Escolher Imagem</button>
+
                 
                 <label for="biography">Biografia:</label>
                 <textarea id="biography" name="biography"></textarea><br>
@@ -162,6 +182,12 @@ function authenticate() {
         // Após a criação da conta ser bem-sucedida, chame a função de redirecionamento
         redirectToForum();
     }
+
+function chooseFile() {
+    document.getElementById('profilePicture').click();
+}
+
+    
 </script>
 </body>
 </html>
