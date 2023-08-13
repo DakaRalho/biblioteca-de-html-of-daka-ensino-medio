@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reddit-Like Page</title>
+    <style>
+        /* Estilos de CSS... */
+
+        .post-user {
+            color: #999;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho e conteúdo principal... -->
+
+    <div class="post-form">
+        <h2>Postar algo</h2>
+        <input type="text" id="user-name" placeholder="Nome de usuário">
+        <textarea id="post-content" rows="4" placeholder="Digite seu post aqui"></textarea>
+        <button onclick="submitPost()">Postar</button>
+    </div>
+
+    <div class="posts">
+        <!-- Aqui serão exibidos os posts -->
+    </div>
+
+    <script>
+        function submitPost() {
+            const userName = document.getElementById('user-name').value;
+            const postContent = document.getElementById('post-content').value;
+
+            if (userName.trim() === '' || postContent.trim() === '') {
+                return;
+            }
+
+            const postElement = document.createElement('div');
+            postElement.classList.add('post');
+            postElement.innerHTML = `
+                <p class="post-user">Postado por: ${userName}</p>
+                <p>${postContent}</p>
+                <button onclick="removePost(this)">Remover</button>
+            `;
+
+            const postsContainer = document.querySelector('.posts');
+            postsContainer.appendChild(postElement);
+
+            document.getElementById('user-name').value = '';
+            document.getElementById('post-content').value = '';
+        }
+
+        // Função removePost...
+    </script>
+</body>
+</html>
