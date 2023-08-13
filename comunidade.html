@@ -6,52 +6,108 @@
     <title>Reddit-Like Page</title>
     <style>
         /* Estilos de CSS... */
-
-        .post-user {
-            color: #999;
-            font-size: 12px;
-        }
     </style>
 </head>
 <body>
-    <!-- Cabeçalho e conteúdo principal... -->
+    <header>
+        <h1>Reddit-Like Page</h1>
+    </header>
 
-    <div class="post-form">
-        <h2>Postar algo</h2>
-        <input type="text" id="user-name" placeholder="Nome de usuário">
-        <textarea id="post-content" rows="4" placeholder="Digite seu post aqui"></textarea>
-        <button onclick="submitPost()">Postar</button>
-    </div>
+    <main>
+        <!-- Área de postagem... -->
 
-    <div class="posts">
-        <!-- Aqui serão exibidos os posts -->
-    </div>
+        <div class="posts">
+            <!-- Aqui serão exibidos os posts -->
+        </div>
+    </main>
 
+    <footer>
+        <p>&copy; 2023 Reddit-Like Page. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
     <script>
-        function submitPost() {
-            const userName = document.getElementById('user-name').value;
-            const postContent = document.getElementById('post-content').value;
+        // Inicialize o Firebase com suas credenciais de configuração
+        const firebaseConfig = {
+            apiKey: "YOUR_API_KEY",
+            authDomain: "YOUR_AUTH_DOMAIN",
+            projectId: "YOUR_PROJECT_ID",
+            storageBucket: "YOUR_STORAGE_BUCKET",
+            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+            appId: "YOUR_APP_ID"
+        };
+        firebase.initializeApp(firebaseConfig);
 
-            if (userName.trim() === '' || postContent.trim() === '') {
-                return;
-            }
-
-            const postElement = document.createElement('div');
-            postElement.classList.add('post');
-            postElement.innerHTML = `
-                <p class="post-user">Postado por: ${userName}</p>
-                <p>${postContent}</p>
-                <button onclick="removePost(this)">Remover</button>
-            `;
-
-            const postsContainer = document.querySelector('.posts');
-            postsContainer.appendChild(postElement);
-
-            document.getElementById('user-name').value = '';
-            document.getElementById('post-content').value = '';
-        }
-
-        // Função removePost...
+        // Funções de autenticação...
     </script>
+
+    <script>// Verifica se o usuário está autenticado e atualiza a interface
+function updateUI(user) {
+    if (user) {
+        // Usuário está autenticado
+        // Exiba o nome de usuário, foto de perfil, etc.
+        // Implemente a lógica para postagens do usuário autenticado
+
+        // Exemplo: Exibir nome de usuário
+        const userDisplayName = user.displayName || user.email;
+        document.getElementById('user-display-name').textContent = userDisplayName;
+
+        // Exemplo: Exibir foto de perfil
+        const userPhotoURL = user.photoURL;
+        if (userPhotoURL) {
+            document.getElementById('user-photo').src = userPhotoURL;
+        }
+    } else {
+        // Usuário não está autenticado
+        // Implemente a lógica para exibir o formulário de login/registro
+    }
+}
+
+// Funções de autenticação do Firebase
+function signUp() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            updateUI(user);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+}
+
+function signIn() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            updateUI(user);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+}
+
+function signOut() {
+    firebase.auth().signOut()
+        .then(() => {
+            updateUI(null);
+        })
+        .catch((error) => {
+            console.error(error);
+        });
+}
+
+// Verifique o estado de autenticação ao carregar a página
+firebase.auth().onAuthStateChanged((user) => {
+    updateUI(user);
+});
+</script>
 </body>
 </html>
