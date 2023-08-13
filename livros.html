@@ -5,120 +5,113 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bassora Studio</title>
 
-<style>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            line-height: 1.6;
+        }
 
-/* Estilos globais */
-body {
-    font-family: Arial, sans-serif;
-    background-color: black;
-    color: white;
-    line-height: 1.6;
-}
+        /* Estilos para o cabeçalho */
+        header {
+            background-color: black;
+            padding: 10px 0;
+        }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
+        nav ul {
+            list-style: none;
+            text-align: center;
+        }
 
-/* Estilos para o cabeçalho */
-header {
-    background-color: black;
-    padding: 10px 0;
-}
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
 
-nav ul {
-    list-style: none;
-    text-align: center;
-}
+        button {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
 
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
+        button.active {
+            background-color: red;
+        }
 
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    transition: color 0.3s;
-}
+        /* Estilos para a seção hero */
+        .hero {
+            background-image: url('path/to/your/image.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 100px 0;
+        }
 
-nav ul li a:hover {
-    color: red;
-}
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
 
-/* Estilos para a seção hero */
-.hero {
-    background-image: url('path/to/your/image.jpg');
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    padding: 100px 0;
-}
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
 
-.hero h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
-}
+        .btn {
+            display: inline-block;
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
 
-.hero p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-}
-.btn {
-    display: inline-block;
-    background-color: red;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
+        .btn:hover {
+            background-color: darkred;
+        }
+        
+        /* Estilos para as outras seções */
+        .about,
+        .services,
+        .contact {
+            padding: 60px 0;
+        }
 
-.btn:hover {
-    background-color: darkred;
-}
+        .about h2,
+        .services h2,
+        .contact h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
 
-/* Estilos para as outras seções */
-.about,
-.services,
-.contact {
-    padding: 60px 0;
-}
+        .services ul {
+            list-style: none;
+        }
 
-.about h2,
-.services h2,
-.contact h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-}
+        .services ul li {
+            margin-bottom: 10px;
+        }
 
-.services ul {
-    list-style: none;
-}
-
-.services ul li {
-    margin-bottom: 10px;
-}
-
-/* Estilos para o rodapé */
-footer {
-    text-align: center;
-    padding: 20px 0;
-    background-color: black;
-    color: white;
-}
-
-</style>
+        /* Estilos para o rodapé */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: black;
+            color: white;
+        }
+    </style>
 
 </head>
 <body>
