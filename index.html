@@ -4,120 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bassora Studio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-<style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            line-height: 1.6;
+        }
 
-    
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        /* Estilos para o cabeçalho */
+        header {
+            background-color: black;
+            padding: 10px 0;
+        }
 
-/* Estilos globais */
-body {
-    font-family: Arial, sans-serif;
-    background-color: black;
-    color: white;
-    line-height: 1.6;
-}
+        nav ul {
+            list-style: none;
+            text-align: center;
+        }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-}
-
-/* Estilos para o cabeçalho */
-header {
-    background-color: black;
-    padding: 10px 0;
-}
-
-nav ul {
-    list-style: none;
-    text-align: center;
-}
-
-nav ul li {
-    display: inline;
-    margin-right: 20px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: bold;
-    transition: color 0.3s;
-}
-
-nav ul li a:hover {
-    color: red;
-}
-
-/* Estilos para a seção hero */
-.hero {
-    background-image: url('path/to/your/image.jpg');
-    background-size: cover;
-    background-position: center;
-    text-align: center;
-    padding: 100px 0;
-}
-
-.hero h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
-}
-
-.hero p {
-    font-size: 1.2em;
-    margin-bottom: 30px;
-}
-.btn {
-    display: inline-block;
-    background-color: red;
-    color: white;
-    padding: 10px 20px;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.btn:hover {
-    background-color: darkred;
-}
-
-/* Estilos para as outras seções */
-.about,
-.services,
-.contact {
-    padding: 60px 0;
-}
-
-.about h2,
-.services h2,
-.contact h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-}
-
-.services ul {
-    list-style: none;
-}
-
-.services ul li {
-    margin-bottom: 10px;
-}
-
-/* Estilos para o rodapé */
-footer {
-    text-align: center;
-    padding: 20px 0;
-    background-color: black;
-    color: white;
-}
-
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
 
         button {
             background-color: #333;
@@ -132,23 +47,81 @@ footer {
             background-color: red;
         }
 
-    
-</style>
+        /* Estilos para a seção hero */
+        .hero {
+            background-image: url('path/to/your/image.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 100px 0;
+        }
 
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
 
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
 
-    
+        .btn {
+            display: inline-block;
+            background-color: red;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: darkred;
+        }
+        
+        /* Estilos para as outras seções */
+        .about,
+        .services,
+        .contact {
+            padding: 60px 0;
+        }
+
+        .about h2,
+        .services h2,
+        .contact h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .services ul {
+            list-style: none;
+        }
+
+        .services ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Estilos para o rodapé */
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: black;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav>
             <ul>
-                <li><a location.href='index.html' class="active">Início</a></li>
-                <li><a location.href='livros.html'>livros</a></li>
-                <li><a location.href='donate.html'>Donate</a></li>
-                <li><a location.href='contato.html'>Contato</a></li>
-                <li><a location.href='outros.html'>Outros</a></li>
-                <li><a location.href='comunidade.html'>Comunidade</a></li>
+                <li><button onclick="window.location.href='index.html'" class="active">Início</button></li>
+                <li><button onclick="window.location.href='livros.html'">Livros</button></li>
+                <li><button onclick="window.location.href='donate.html'">Donate</button></li>
+                <li><button onclick="window.location.href='contato.html'">Contato</button></li>
+                <li><button onclick="window.location.href='outros.html'">Outros</button></li>
+                <li><button onclick="window.location.href='comunidade.html'">Comunidade</button></li>
             </ul>
         </nav>
     </header>
@@ -156,7 +129,7 @@ footer {
     <section class="hero">
         <h1>Bem-vindo ao Bassora Studio</h1>
         <p>Produzindo obras incríveis para contar histórias.</p>
-        <a href="#outros.html" class="btn">VER OBRAS</a>
+        <button onclick="window.location.href='#outros.html'" class="btn">VER OBRAS</button>
     </section>
 
     <section class="about">
@@ -167,7 +140,7 @@ footer {
     <section class="contact">
         <h2>Entre em Contato</h2>
         <p>Estamos ansiosos para trabalhar no seu próximo projeto. Entre em contato conosco para discutir suas ideias e necessidades.</p>
-        <a href="#contato.html" class="btn">Entrar em Contato</a>
+        <button onclick="window.location.href='#contato.html'" class="btn">Entrar em Contato</button>
     </section>
 
     <footer>
