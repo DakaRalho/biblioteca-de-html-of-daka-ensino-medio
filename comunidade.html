@@ -50,5 +50,64 @@
     <footer>
         <p>&copy; 2023 Login e Criação de Conta. Todos os direitos reservados.</p>
     </footer>
+
+<!-- ... (código anterior) ... -->
+
+<script>
+    function redirectToForum() {
+        // Simulando o redirecionamento para a página do fórum
+        window.location.href = 'pagina-do-forum.html';
+    }
+
+    function login() {
+        // Aqui você pode adicionar a lógica de autenticação
+function authenticate() {
+            var username = document.getElementById('loginUsername').value;
+            var password = document.getElementById('loginPassword').value;
+
+            // Verifica as credenciais de autenticação
+            if (username === 'admin' && password === 'admin') {
+                alert('Login bem-sucedido!');
+                // Redireciona para a página do fórum
+                window.location.href = 'pagina-do-forum.html';
+                return false; // Impede o envio do formulário
+            } else {
+                alert('Credenciais inválidas. Tente novamente.');
+                return false; // Impede o envio do formulário
+            }
+        }
+
+        
+        // Após o login ser bem-sucedido, chame a função de redirecionamento
+        redirectToForum();
+    }
+
+    function createAccount() {
+        // Aqui você pode adicionar a lógica de criação de conta
+   function createAccount() {
+            var username = document.getElementById('signupUsername').value;
+            var password = document.getElementById('signupPassword').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('As senhas não coincidem. Tente novamente.');
+                return false; // Impede o envio do formulário
+            }
+
+            // Simulação de criação de conta bem-sucedida
+            alert('Conta criada com sucesso!');
+            // Redireciona para a página do fórum
+            window.location.href = 'pagina-do-forum.html';
+            return false; // Impede o envio do formulário
+        }
+        
+        // Após a criação da conta ser bem-sucedida, chame a função de redirecionamento
+        redirectToForum();
+    }
+</script>
 </body>
 </html>
+
+
+
+
