@@ -14,13 +14,6 @@
     </header>
 
     <main>
-        <section class="profile">
-            <h2>Seu Perfil</h2>
-            <img id="profile-image" src="default-profile-image.jpg" alt="Perfil">
-            <p id="profile-name">Nome de Usuário</p>
-            <button id="sign-in-button" onclick="signIn()">Entrar</button>
-        </section>
-
         <section class="servers">
             <h2>Servidores</h2>
             <ul id="server-list"></ul>
@@ -40,32 +33,10 @@
     </footer>
 
     <script>
-        // Funções de autenticação, servidor e postagem
-
-        // Funções de autenticação e perfil
-function signIn() {
-    const profileImage = document.getElementById('profile-image');
-    const profileName = document.getElementById('profile-name');
-    const signInButton = document.getElementById('sign-in-button');
-
-    // Simulando autenticação bem-sucedida
-    profileImage.src = 'user-profile-image.jpg';
-    profileName.textContent = 'Usuário Autenticado';
-    signInButton.textContent = 'Sair';
-    signInButton.onclick = signOut;
-}
-
-function signOut() {
-    const profileImage = document.getElementById('profile-image');
-    const profileName = document.getElementById('profile-name');
-    const signInButton = document.getElementById('sign-in-button');
-
-    // Simulando saída
-    profileImage.src = 'default-profile-image.jpg';
-    profileName.textContent = 'Nome de Usuário';
-    signInButton.textContent = 'Entrar';
-    signInButton.onclick = signIn;
-}
+        // Funções de servidor e postagem
+// Armazenamento simulado para servidores e postagens
+const servers = [];
+let currentServerIndex = -1;
 
 // Funções de servidor
 function createServer() {
@@ -73,9 +44,19 @@ function createServer() {
     const serverName = prompt('Digite o nome do servidor:');
 
     if (serverName) {
+        const server = {
+            name: serverName,
+            posts: []
+        };
+        servers.push(server);
+        currentServerIndex = servers.length - 1;
+
         const serverItem = document.createElement('li');
         serverItem.textContent = serverName;
+        serverItem.onclick = () => loadPosts(currentServerIndex);
         serverList.appendChild(serverItem);
+
+        loadPosts(currentServerIndex);
     }
 }
 
@@ -83,10 +64,29 @@ function createServer() {
 function submitPost() {
     const postContent = document.getElementById('post-content').value;
     if (postContent.trim() !== '') {
-        const postList = document.getElementById('post-list');
-        const postItem = document.createElement('li');
-        postItem.textContent = postContent;
-        postList.appendChild(postItem);
+        const currentServer = servers[currentServerIndex];
+        if (currentServer) {
+            currentServer.posts.push(postContent);
+
+            const postList = document.getElementById('post-list');
+            const postItem = document.createElement('li');
+            postItem.textContent = postContent;
+            postList.appendChild(postItem);
+        }
+    }
+}
+
+function loadPosts(serverIndex) {
+    const postList = document.getElementById('post-list');
+    postList.innerHTML = '';
+
+    const currentServer = servers[serverIndex];
+    if (currentServer) {
+        currentServer.posts.forEach((postContent) => {
+            const postItem = document.createElement('li');
+            postItem.textContent = postContent;
+            postList.appendChild(postItem);
+        });
     }
 }
 
