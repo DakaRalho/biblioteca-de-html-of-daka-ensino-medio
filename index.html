@@ -4,126 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bassora Studio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
 
-        @font-face {
-            font-family: "graffit-city";
-            src: url('Graffiti City.otf') format('truetype');
-        }
- @font-face {
-            font-family: "scared";
-            src: url('You Are Scared.otf') format('truetype');
-        }
+    @font-face {
+        font-family: "graffit-city";
+        src: url('caminho/para/Graffiti City.otf') format('truetype');
+    }
 
-        
-        body {
-            font-family: "graffit-city", "scared",
-            background-color: black;
-            color: white;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
+    @font-face {
+        font-family: "scared";
+        src: url('caminho/para/You Are Scared.otf') format('truetype');
+    }
 
-        /* Estilos para o cabeçalho */
-        header {
-            background-color: black;
-            padding: 10px 0;
-        }
+    body {
+        font-family: "graffit-city", "scared", Arial, sans-serif;
+        background-color: black;
+        color: white;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+    }
 
-        nav ul {
-            list-style: none;
-            text-align: center;
-        }
+    /* Estilos para o cabeçalho */
+    header {
+        background-color: black;
+        padding: 20px 0;
+    }
 
-        nav ul li {
-            display: inline;
-            margin-right: 20px;
-        }
+    nav ul {
+        list-style: none;
+        text-align: center;
+    }
 
-        button {
-            background-color: #333;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            font-weight: normal;
-        }
+    nav ul li {
+        display: inline;
+        margin-right: 20px;
+    }
 
-        button.active {
-            background-color: red;
-        }
+    button {
+        background-color: #f44336; /* Cor vermelha do Material Design */
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: normal;
+        border-radius: 5px;
+        transition: background-color 0.3s;
+    }
 
-        /* Estilos para a seção hero */
-        .hero {
-            background-image: url('caminho/para/sua/imagem.jpg');
-            background-size: cover;
-            background-position: center;
-            text-align: center;
-            padding: 100px 0;
-        }
+    button.active {
+        background-color: red;
+    }
 
-        .hero h1 {
-            font-size: 3em;
-            margin-bottom: 20px;
-        }
+    /* Estilos para a seção hero */
+    .hero {
+        background-image: url('caminho/para/sua/imagem.jpg');
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+        padding: 100px 0;
+    }
 
-        .hero p {
-            font-size: 1.2em;
-            margin-bottom: 30px;
-        }
+    .hero h1 {
+        font-size: 3em;
+        margin-bottom: 20px;
+    }
 
-        .btn {
-            display: inline-block;
-            background-color: red;
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
+    .hero p {
+        font-size: 1.2em;
+        margin-bottom: 30px;
+    }
 
-        .btn:hover {
-            background-color: darkred;
-        }
-        
-        /* Estilos para as outras seções */
-        .about,
-        .services,
-        .contact {
-            padding: 60px 0;
-        }
+    .btn {
+        display: inline-block;
+        background-color: #f44336;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
 
-        .about h2,
-        .services h2,
-        .contact h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
+    .btn:hover {
+        background-color: #d32f2f; /* Tom mais escuro de vermelho */
+    }
 
-        .services ul {
-            list-style: none;
-        }
+    /* Estilos para as outras seções */
+    .about,
+    .services,
+    .contact {
+        padding: 60px 0;
+    }
 
-        .services ul li {
-            margin-bottom: 10px;
-        }
+    .about h2,
+    .services h2,
+    .contact h2 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+    }
 
-        /* Estilos para o rodapé */
-        footer {
-            text-align: center;
-            padding: 20px 0;
-            background-color: black;
-            color: white;
-        }
-    </style>
+    .services ul {
+        list-style: none;
+    }
+
+    .services ul li {
+        margin-bottom: 10px;
+    }
+
+    /* Estilos para o rodapé */
+    footer {
+        text-align: center;
+        padding: 20px 0;
+        background-color: black;
+        color: white;
+    }
+</style>
+
 </head>
 <body>
     <header>
