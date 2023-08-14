@@ -73,6 +73,41 @@ button.active {
     background-color: red;
 }
 
+button {
+    background-color: #d60e00; /* Cor vermelha do Material Design */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 20px; /* Ajuste do tamanho da fonte */
+    cursor: pointer;
+    font-family: "scared"; /* Aplicação da fonte "scared" */
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+
+button.botao-roxo {
+    background-color: #8a2be2; /* Cor roxa */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: "scared", sans-serif;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button.botao-roxo:hover {
+    background-color: #6a1cb3; /* Cor mais escura ao passar o mouse */
+}
+
+
+
+
+
+
+    
 /* Estilos para a seção hero */
 .hero {
     background-image: url('caminho/para/sua/imagem.jpg');
@@ -162,7 +197,7 @@ Copiar
     <header>
         <nav>
             <ul>
-<li><button onclick="window.location.href='livros/Aberracoes1997.html'">Aberrações 1997</button></li>
+<li><button class="botao-roxo" onclick="window.location.href='livros/Aberracoes1997.html'">Aberrações 1997</button></li>
             </ul>
         </nav>
     </header>
