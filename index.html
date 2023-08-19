@@ -153,37 +153,31 @@ Copiar
 }
 
 
-/* Estilo para o botão com o efeito das pequenas imagens */
-.button-effect {
+.button-with-background {
     position: relative;
+    display: inline-block;
     overflow: hidden;
 }
 
-.button-effect::before,
-.button-effect::after {
+.button-with-background::before {
     content: "";
     position: absolute;
-    background-image: url('imagem_2023-08-19_110018428.png'); /* Caminho para as pequenas imagens */
-    background-repeat: repeat;
-    background-size: 20px; /* Tamanho das pequenas imagens */
-    width: 100%;
-    height: 100%;
-    opacity: 0.5;
-    z-index: -1;
-    pointer-events: none;
+    top: -50px; /* Ajuste a posição vertical das imagens */
+    left: -50px; /* Ajuste a posição horizontal das imagens */
+    width: 150px; /* Ajuste a largura das imagens */
+    height: 150px; /* Ajuste a altura das imagens */
+    background-image: url('caminho/para/imagem-efeito.png'); /* Substitua pelo caminho da imagem do efeito */
+    background-size: cover;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.3s, transform 0.3s;
 }
 
-.button-effect::before {
-    top: -50px;
-    left: -50px;
-    transform: rotate(45deg);
+.button-with-background:hover::before {
+    opacity: 1;
+    transform: scale(1);
 }
 
-.button-effect::after {
-    bottom: -50px;
-    right: -50px;
-    transform: rotate(-45deg);
-}
 
 
     
@@ -211,7 +205,7 @@ Copiar
     </div>
         <h1>Bem-vindo ao Bassora Studio</h1>
         <p>Produzindo obras incriveis para contar historias.</p>
-        <button class="button-effect" onclick="window.location.href='outros.html'">VER OBRAS</button>
+       <button onclick="window.location.href='outros.html'" class="button-with-background">VER OBRAS</button>
     </section>
 
     <section class="about">
