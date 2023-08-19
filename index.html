@@ -137,6 +137,21 @@ footer {
     color: white;
 }
 Copiar
+
+
+    .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Espaço entre a imagem e o título */
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px; /* Ajuste a altura máxima conforme necessário */
+}
+
 </style>
 
 
@@ -156,6 +171,9 @@ Copiar
     </header>
 
     <section class="hero">
+           <div class="image-container">
+        <img src="caminho/para/sua/imagem-retangular.jpg" alt="Imagem Retangular">
+    </div>
         <h1>Bem-vindo ao Bassora Studio</h1>
         <p>Produzindo obras incriveis para contar historias.</p>
         <button onclick="window.location.href='outros.html'">VER OBRAS</button>
