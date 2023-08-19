@@ -152,6 +152,32 @@ Copiar
     max-height: 300px; /* Ajuste a altura máxima conforme necessário */
 }
 
+.ver-obras-button {
+    position: relative;
+    overflow: hidden;
+    z-index: 1; /* Certifica-se de que o botão esteja acima das imagens */
+}
+
+.ver-obras-button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%; /* Inicia fora da área do botão */
+    width: 100%;
+    height: 100%;
+    background-image: url('caminho/para/sua/imagem-pequena.jpg'); /* Caminho para a imagem pequena */
+    background-size: cover;
+    opacity: 0; /* Começa invisível */
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.ver-obras-button:hover::before {
+    left: 100%; /* Move a imagem para dentro da área do botão */
+    opacity: 1; /* Torna a imagem visível */
+    transform: translateX(-100%); /* Desliza a imagem para a direita */
+}
+
+    
 </style>
 
 
@@ -176,7 +202,7 @@ Copiar
     </div>
         <h1>Bem-vindo ao Bassora Studio</h1>
         <p>Produzindo obras incriveis para contar historias.</p>
-        <button onclick="window.location.href='outros.html'">VER OBRAS</button>
+        <button class="ver-obras-button" onclick="window.location.href='outros.html'">VER OBRAS</button>
     </section>
 
     <section class="about">
