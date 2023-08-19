@@ -203,6 +203,24 @@ Copiar
     text-align: center;
 }
 
+    .participants-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.participant-link {
+    text-decoration: none; /* Remover sublinhado dos links */
+    color: inherit; /* Herdar a cor de texto padrão */
+}
+
+.participant {
+    flex: 1;
+    max-width: calc(50% - 10px);
+    text-align: center;
+}
+
 
 
 
@@ -243,19 +261,23 @@ Copiar
 <section class="about">
     <h2>Sobre Nós</h2>
     <div class="participants-container">
-        <a href="pagina_participante_1.html" class="participant">
-            <div class="image-container">
-                <img src="caminho/para/imagem_participante_1.jpg" alt="Participante 1">
+        <a href="pagina_participante_1.html" class="participant-link">
+            <div class="participant">
+                <div class="image-container">
+                    <img src="caminho/para/imagem_participante_1.jpg" alt="Participante 1">
+                </div>
+                <h3>Nome do Participante 1</h3>
+                <p>Descrição breve sobre o Participante 1 e seu papel no estúdio.</p>
             </div>
-            <h3>Nome do Participante 1</h3>
-            <p>Descrição breve sobre o Participante 1 e seu papel no estúdio.</p>
         </a>
-        <a href="pagina_participante_2.html" class="participant">
-            <div class="image-container">
-                <img src="caminho/para/imagem_participante_2.jpg" alt="Participante 2">
+        <a href="pagina_participante_2.html" class="participant-link">
+            <div class="participant">
+                <div class="image-container">
+                    <img src="caminho/para/imagem_participante_2.jpg" alt="Participante 2">
+                </div>
+                <h3>Nome do Participante 2</h3>
+                <p>Descrição breve sobre o Participante 2 e seu papel no estúdio.</p>
             </div>
-            <h3>Nome do Participante 2</h3>
-            <p>Descrição breve sobre o Participante 2 e seu papel no estúdio.</p>
         </a>
         <!-- Adicione mais participantes conforme necessário -->
     </div>
