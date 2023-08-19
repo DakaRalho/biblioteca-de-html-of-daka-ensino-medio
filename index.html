@@ -153,30 +153,38 @@ Copiar
 }
 
 
-.ver-obras-button {
-    position: relative; /* Permitirá posicionar o fundo absoluto */
-    overflow: hidden; /* Ocultar qualquer conteúdo que ultrapasse o botão */
-    z-index: 1; /* Certificar-se de que o botão está acima do fundo */
+.image-hover {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    z-index: 1;
 }
 
-.ver-obras-button::before {
-    content: ""; /* Cria um pseudo-elemento para o fundo */
-    position: absolute; /* Posiciona o fundo em relação ao botão */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('imagem_2023-08-19_110018428.png'); /* Substitua pelo caminho da sua imagem */
-    background-size: cover;
-    background-position: center;
-    opacity: 0; /* Começa com a opacidade 0 para estar invisível */
-    z-index: -1; /* Coloca o fundo atrás do botão */
-    transition: opacity 0.3s; /* Adiciona uma transição suave */
+.image-hover img {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    opacity: 0.6;
+    transition: opacity 0.3s;
 }
 
-.ver-obras-button:hover::before {
-    opacity: 0.2; /* Aumenta a opacidade quando o botão é hover */
+#ver-obras-button:hover ~ .image-hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+#ver-obras-button:hover ~ .image-hover img {
+    opacity: 1;
+}
+
 
 
 
@@ -206,7 +214,13 @@ Copiar
     </div>
         <h1>Bem-vindo ao Bassora Studio</h1>
         <p>Produzindo obras para contar historias FODAS.</p>
-       <button class="ver-obras-button" onclick="window.location.href='outros.html'">VER OBRAS</button>
+       <button id="ver-obras-button" onclick="window.location.href='outros.html'">VER OBRAS</button>
+<div class="image-hover">
+    <img src="imagem_2023-08-19_110018428.png" alt="Imagem 1">
+    <img src="imagem_2023-08-19_110018428.png" alt="Imagem 2">
+    <!-- Adicione mais imagens aqui, se desejar -->
+</div>
+
     </section>
 
     <section class="about">
