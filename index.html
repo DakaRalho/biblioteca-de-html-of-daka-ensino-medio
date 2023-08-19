@@ -190,6 +190,18 @@ Copiar
     opacity: 1;
 }
 
+.participants-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px; /* Espaçamento entre os participantes */
+}
+
+.participant {
+    flex: 1;
+    max-width: calc(50% - 10px); /* Divide em duas colunas, considerando o espaçamento */
+    text-align: center;
+}
 
 
 
@@ -228,10 +240,27 @@ Copiar
 
     </section>
 
-    <section class="about">
-        <h2>Sobre Nos</h2>
-        <p>Somos um estúdio apaixonado por criar conteúdo audiovisual de alta qualidade.</p>
-    </section>
+<section class="about">
+    <h2>Sobre Nós</h2>
+    <div class="participants-container">
+        <div class="participant">
+            <div class="image-container">
+                <img src="caminho/para/imagem_participante_1.jpg" alt="Participante 1">
+            </div>
+            <h3>Nome do Participante 1</h3>
+            <p>Descrição sobre o Participante 1 e seu papel no estúdio.</p>
+        </div>
+        <div class="participant">
+            <div class="image-container">
+                <img src="caminho/para/imagem_participante_2.jpg" alt="Participante 2">
+            </div>
+            <h3>Nome do Participante 2</h3>
+            <p>Descrição sobre o Participante 2 e seu papel no estúdio.</p>
+        </div>
+        <!-- Adicione mais participantes conforme necessário -->
+    </div>
+</section>
+
 
     <section class="contact">
         <h2>Entre em Contato</h2>
