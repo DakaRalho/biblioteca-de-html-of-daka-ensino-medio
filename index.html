@@ -153,30 +153,31 @@ Copiar
 }
 
 
-.button-with-background {
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
+.ver-obras-button {
+    position: relative; /* Permitirá posicionar o fundo absoluto */
+    overflow: hidden; /* Ocultar qualquer conteúdo que ultrapasse o botão */
+    z-index: 1; /* Certificar-se de que o botão está acima do fundo */
 }
 
-.button-with-background::before {
-    content: "";
-    position: absolute;
-    top: -50px; /* Ajuste a posição vertical das imagens */
-    left: -50px; /* Ajuste a posição horizontal das imagens */
-    width: 150px; /* Ajuste a largura das imagens */
-    height: 150px; /* Ajuste a altura das imagens */
-    background-image: url('caminho/para/imagem-efeito.png'); /* Substitua pelo caminho da imagem do efeito */
+.ver-obras-button::before {
+    content: ""; /* Cria um pseudo-elemento para o fundo */
+    position: absolute; /* Posiciona o fundo em relação ao botão */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('caminho/para/imagens-de-fundo.png'); /* Substitua pelo caminho da sua imagem */
     background-size: cover;
-    opacity: 0;
-    transform: scale(0.8);
-    transition: opacity 0.3s, transform 0.3s;
+    background-position: center;
+    opacity: 0; /* Começa com a opacidade 0 para estar invisível */
+    z-index: -1; /* Coloca o fundo atrás do botão */
+    transition: opacity 0.3s; /* Adiciona uma transição suave */
 }
 
-.button-with-background:hover::before {
-    opacity: 1;
-    transform: scale(1);
+.ver-obras-button:hover::before {
+    opacity: 0.2; /* Aumenta a opacidade quando o botão é hover */
 }
+
 
 
 
@@ -205,7 +206,7 @@ Copiar
     </div>
         <h1>Bem-vindo ao Bassora Studio</h1>
         <p>Produzindo obras para contar historias FODAS.</p>
-       <button onclick="window.location.href='outros.html'" class="button-with-background">VER OBRAS</button>
+       <button class="ver-obras-button" onclick="window.location.href='outros.html'">VER OBRAS</button>
     </section>
 
     <section class="about">
