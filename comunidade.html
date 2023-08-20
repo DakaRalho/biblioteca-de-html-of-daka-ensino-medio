@@ -138,56 +138,44 @@ button#uploadButton:hover {
     }
 
     function login() {
-        // Aqui você pode adicionar a lógica de autenticação
+        // Lógica de autenticação aqui
 
-        function authenticate() {
-            var username = document.getElementById('loginUsername').value;
-            var password = document.getElementById('loginPassword').value;
+        var username = document.getElementById('loginUsername').value;
+        var password = document.getElementById('loginPassword').value;
 
-            // Verifica as credenciais de autenticação
-            if (username === 'admin' && password === 'admin') {
-                alert('Login bem-sucedido!');
-                // Redireciona para a página do fórum
-                window.location.href = 'pagina-do-forum.html';
-            } else {
-                alert('Credenciais inválidas. Tente novamente.');
-            }
-            return false; // Impede o envio do formulário
+        // Verifica as credenciais de autenticação
+        if (username === 'admin' && password === 'admin') {
+            alert('Login bem-sucedido!');
+            // Redireciona para a página do fórum
+            redirectToForum();
+        } else {
+            alert('Credenciais inválidas. Tente novamente.');
         }
-
-        
-        // Após o login ser bem-sucedido, chame a função de redirecionamento
-        redirectToForum();
+        return false; // Impede o envio do formulário
     }
 
     function createAccount() {
-        // Aqui você pode adicionar a lógica de criação de conta
-   function createAccount() {
-            var username = document.getElementById('signupUsername').value;
-            var password = document.getElementById('signupPassword').value;
-            var confirmPassword = document.getElementById('confirmPassword').value;
+        // Lógica de criação de conta aqui
 
-            if (password !== confirmPassword) {
-                alert('As senhas não coincidem. Tente novamente.');
-                return false; // Impede o envio do formulário
-            }
+        var username = document.getElementById('signupUsername').value;
+        var password = document.getElementById('signupPassword').value;
+        var confirmPassword = document.getElementById('confirmPassword').value;
 
-            // Simulação de criação de conta bem-sucedida
-            alert('Conta criada com sucesso!');
-            // Redireciona para a página do fórum
-            window.location.href = 'forum.html';
+        if (password !== confirmPassword) {
+            alert('As senhas não coincidem. Tente novamente.');
             return false; // Impede o envio do formulário
         }
-        
-        // Após a criação da conta ser bem-sucedida, chame a função de redirecionamento
+
+        // Simulação de criação de conta bem-sucedida
+        alert('Conta criada com sucesso!');
+        // Redireciona para a página do fórum
         redirectToForum();
+        return false; // Impede o envio do formulário
     }
 
-function chooseFile() {
-    document.getElementById('profilePicture').click();
-}
-
-    
+    function chooseFile() {
+        document.getElementById('profilePicture').click();
+    }
 </script>
 </body>
 </html>
