@@ -4,37 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login e Criação de Conta</title>
-    <style>
-        /* Estilos globais */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: black;
-            color: white;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
 
-        header {
-            background-color: black;
-            color: white;
-            padding: 10px 0;
-            text-align: center;
-        }
+<style>/* Estilos globais */
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+    color: white;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
 
-        main {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+header {
+    background-color: black;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
 
-        h1, h2 {
-            color: red;
-        }
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
-        /* ... (resto dos estilos) ... */
+h1, h2 {
+    color: red;
+}
 
-    </style>
+form {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+label, input, textarea {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: darkred;
+}
+
+
+button#uploadButton {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+button#uploadButton:hover {
+    background-color: darkred;
+}
+
+
+    
+</style>
+    
 </head>
 <body>
     <header>
@@ -44,7 +88,7 @@
     <main>
         <section id="login">
             <h2>Login</h2>
-            <form onsubmit="return authenticate();">
+            <form>
                 <label for="loginUsername">Nome de Usuário:</label>
                 <input type="text" id="loginUsername" name="loginUsername" required><br>
                 
@@ -54,13 +98,48 @@
                 <button type="submit">Entrar</button>
             </form>
         </section>
+        
+        <section id="create-account">
+            <h2>Criar Conta</h2>
+            <form>
+                <label for="signupUsername">Nome de Usuário:</label>
+                <input type="text" id="signupUsername" name="signupUsername" required><br>
+                
+                <label for="signupPassword">Senha:</label>
+                <input type="password" id="signupPassword" name="signupPassword" required><br>
+                
+                <label for="confirmPassword">Confirmar Senha:</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" required><br>
+
+
+<label for="profilePicture">Foto de Perfil:</label>
+<input type="file" id="profilePicture" name="profilePicture">
+<button id="uploadButton" onclick="chooseFile()">Escolher Imagem</button>
+
+                
+                <label for="biography">Biografia:</label>
+                <textarea id="biography" name="biography"></textarea><br>
+                
+                <button type="submit">Criar Conta</button>
+            </form>
+        </section>
     </main>
 
     <footer>
         <p>&copy; 2023 Login e Criação de Conta. Todos os direitos reservados.</p>
     </footer>
 
-    <script>
+<!-- ... (código anterior) ... -->
+
+<script>
+    function redirectToForum() {
+        // Simulando o redirecionamento para a página do fórum
+        window.location.href = 'pagina-do-forum.html';
+    }
+
+    function login() {
+        // Aqui você pode adicionar a lógica de autenticação
+
         function authenticate() {
             var username = document.getElementById('loginUsername').value;
             var password = document.getElementById('loginPassword').value;
@@ -69,12 +148,46 @@
             if (username === 'admin' && password === 'admin') {
                 alert('Login bem-sucedido!');
                 // Redireciona para a página do fórum
-                window.location.href = 'forum.html';
+                window.location.href = 'pagina-do-forum.html';
             } else {
                 alert('Credenciais inválidas. Tente novamente.');
             }
             return false; // Impede o envio do formulário
         }
-    </script>
+
+        
+        // Após o login ser bem-sucedido, chame a função de redirecionamento
+        redirectToForum();
+    }
+
+    function createAccount() {
+        // Aqui você pode adicionar a lógica de criação de conta
+   function createAccount() {
+            var username = document.getElementById('signupUsername').value;
+            var password = document.getElementById('signupPassword').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('As senhas não coincidem. Tente novamente.');
+                return false; // Impede o envio do formulário
+            }
+
+            // Simulação de criação de conta bem-sucedida
+            alert('Conta criada com sucesso!');
+            // Redireciona para a página do fórum
+            window.location.href = 'pagina-do-forum.html';
+            return false; // Impede o envio do formulário
+        }
+        
+        // Após a criação da conta ser bem-sucedida, chame a função de redirecionamento
+        redirectToForum();
+    }
+
+function chooseFile() {
+    document.getElementById('profilePicture').click();
+}
+
+    
+</script>
 </body>
 </html>
