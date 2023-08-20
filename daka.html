@@ -198,9 +198,62 @@ Copiar
 }
 
         h1 {
-            font-family: "zombies", sans-serif; /* Aplicação da fonte "Codex" apenas ao h1 */
+            font-family: "scared", sans-serif; /* Aplicação da fonte "Codex" apenas ao h1 */
         }
 
+.participant-works {
+    padding: 60px 0;
+}
+
+.participant-works h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+/* Styling for the images and hover effect */
+.participant-works .image-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.participant-works .image-container img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+}
+
+.participant-works .image-hover {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.participant-works .image-hover img {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+/* Show hover effect on image hover */
+.participant-works .image-container:hover .image-hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.participant-works .image-container:hover .image-hover img {
+    opacity: 1;
+}
 
 
 
@@ -246,6 +299,19 @@ Copiar
         </div>
     </section>
 
+<section class="participant-works">
+    <h2>Obras do Participante</h2>
+    <div class="image-container">
+        <img src="caminho/para/obra1.jpg" alt="Obra 1">
+        <div class="image-hover">
+            <img src="caminho/para/icon_obra1.png" alt="Ícone Obra 1">
+        </div>
+    </div>
+    <!-- Repeat the above structure for each work -->
+</section>
+
+
+    
     <footer>
         <!-- Seu rodapé aqui -->
     </footer>
