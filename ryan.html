@@ -1,1 +1,314 @@
 
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Bassora studio">
+    <meta property="og:description" content="Página do Participante Daka da Bassora Studio">
+    <meta property="og:image" content="caminho/para/imagem_daka.png">
+    <meta property="og:type" content="website">
+    
+    <title>Página do Participante Daka</title>
+    <style>
+        /* Estilos de CSS aqui */
+
+<style> * { margin: 0; padding: 0; box-sizing: border-box; }
+
+@font-face {
+    font-family: "graffit-city";
+    src: url('Graffiti City.otf') format('truetype');
+}
+
+@font-face {
+    font-family: "scared";
+    src: url('You Are Scared.otf') format('truetype');
+}
+
+
+@font-face {
+    font-family: "zombies";
+    src: url('ZOMBIES REBORN.ttf') format('truetype');
+}
+
+
+@font-face {
+    font-family: "satan";
+    src: url('who asks satam.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: "codex";
+    src: url('codex.ttf') format('truetype');
+}
+
+
+    
+body {
+    font-family: "scared", "satan";
+    background-color: black;
+    color: white;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+/* Estilos para o cabeçalho */
+header {
+    background-color: black;
+    padding: 20px 0;
+}
+
+nav ul {
+    list-style: none;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+button {
+    background-color: #d60e00; /* Cor vermelha do Material Design */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 20px; /* Ajuste do tamanho da fonte */
+    cursor: pointer;
+    font-family: "scared"; /* Aplicação da fonte "scared" */
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button.active {
+    background-color: red;
+}
+
+/* Estilos para a seção hero */
+.hero {
+    background-image: url('caminho/para/sua/imagem.jpg');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    padding: 100px 0;
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: inline-block;
+    background-color: #ff1100;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 18px; /* Ajuste do tamanho da fonte */
+    font-family: "scared"; /* Aplicação da fonte "scared" */
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #c70000; /* Tom mais escuro de vermelho */
+}
+
+/* Estilos para as outras seções */
+.about,
+.services,
+.contact {
+    padding: 60px 0;
+}
+
+.about h2,
+.services h2,
+.contact h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.services ul {
+    list-style: none;
+}
+
+.services ul li {
+    margin-bottom: 10px;
+}
+
+/* Estilos para o rodapé */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: black;
+    color: white;
+}
+Copiar
+
+
+    .image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Espaço entre a imagem e o título */
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px; /* Ajuste a altura máxima conforme necessário */
+}
+
+
+.image-hover {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.image-hover img {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+#ver-obras-button:hover ~ .image-hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#ver-obras-button:hover ~ .image-hover img {
+    opacity: 1;
+}
+
+        h1 {
+            font-family: "scared", sans-serif; /* Aplicação da fonte "Codex" apenas ao h1 */
+        }
+
+.participant-works {
+    padding: 60px 0;
+}
+
+.participant-works h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+/* Styling for the images and hover effect */
+.participant-works .image-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.participant-works .image-container img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+}
+
+.participant-works .image-hover {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    padding: 5px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.participant-works .image-hover img {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    opacity: 0.6;
+    transition: opacity 0.3s;
+}
+
+/* Show hover effect on image hover */
+.participant-works .image-container:hover .image-hover {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.participant-works .image-container:hover .image-hover img {
+    opacity: 1;
+}
+
+
+
+
+
+    
+</style>
+
+      
+    </style>
+</head>
+<body>
+    <header>
+        <!-- Seu cabeçalho aqui -->
+
+ <header>
+        <nav>
+            <ul>
+                <li><button onclick="window.location.href='index.html'" class="active">Início</button></li>
+                <li><button onclick="window.location.href='livros.html'">Livros</button></li>
+                <li><button onclick="window.location.href='donate.html'">Donate</button></li>
+                <li><button onclick="window.location.href='contato.html'">Contato</button></li>
+                <li><button onclick="window.location.href='outros.html'">Outros</button></li>
+                <li><button onclick="window.location.href='comunidade.html'">Comunidade</button></li>
+            </ul>
+        </nav>
+    </header>
+
+      
+    </header>
+
+    <section class="participant-profile">
+        <div class="image-container">
+            <img src="Daka_foto.png" alt="Ryan">
+        </div>
+        <h1>Ryan</h1>
+        <p>Descrição completa do Daka e seu papel no estúdio.</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/ryan_vitordelima/" target="_blank">Instagram</a>
+
+    </section>
+
+<section class="participant-works">
+    <h2>Obras do Participante</h2>
+    <div class="image-container">
+        <img src="caminho/para/obra1.jpg" alt="Obra 1">
+    </div>
+    <!-- Repeat the above structure for each work -->
+</section>
+
+
+    
+    <footer>
+        <!-- Seu rodapé aqui -->
+    </footer>
+</body>
+</html>
