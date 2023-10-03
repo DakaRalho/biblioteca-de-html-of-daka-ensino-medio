@@ -197,32 +197,40 @@ Copiar
     gap: 20px; /* Espaçamento entre os participantes */
 }
 
+.participants-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px; /* Espaçamento entre os participantes */
+}
+
 .participant {
     flex: 1;
     max-width: calc(50% - 10px); /* Divide em duas colunas, considerando o espaçamento */
     text-align: center;
 }
-
-.participants-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px; /* Espaçamento entre os participantes */
-    flex-wrap: wrap;
-}
-
+    
 .participant-link {
     text-decoration: none;
     color: inherit;
 }
 
-.participant {
+.about .elementos-lado-a-lado {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px; /* Espaçamento entre os elementos */
+}
+
+.about .elementos-lado-a-lado .elemento {
     flex: 1;
-    max-width: calc(50% - 5px); /* Ajuste para compensar o espaçamento */
+    max-width: calc(50% - 10px); /* Divide em duas colunas, considerando o espaçamento */
     text-align: center;
 }
 
 
 
+    
 
     
 </style>
